@@ -1,0 +1,36 @@
+﻿@model MvcLibrary.Models.Entity.Personel
+@{
+    ViewBag.Title = "PersonelUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+<br />
+@using (Html.BeginForm("PersonelUpdate", "Personal", FormMethod.Post))
+{
+    <div>
+        @Html.HiddenFor(x => x.PersonelId)
+        <label class="form-control">Personel Adı Soyadı</label>
+        <br />
+        @Html.TextBoxFor(x => x.PersonelNameSurname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PersonelNameSurname, "", new { @style = "color: red" })
+        <br />
+        <br />
+        <label class="form-control">Aktif/Pasif</label>
+        <br />
+        @Html.DropDownListFor(x => x.Status, (IEnumerable<SelectListItem>)ViewBag.status, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <br />
+    <div>
+        <button class="btn btn-outline-success" type="submit">Güncelle</button>
+    </div>
+}
+
+
+
+
+
+
+

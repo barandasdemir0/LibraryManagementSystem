@@ -1,0 +1,31 @@
+﻿@model MvcLibrary.Models.Entity.Category
+@{
+    ViewBag.Title = "CategoryUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<br />
+@using (Html.BeginForm("CategoryUpdate", "Category", FormMethod.Post))
+{
+<div>
+    @Html.HiddenFor(x => x.CategoryId)
+    <label class="form-control">Kategori Adı</label>
+    <br />
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    <br />
+    <label class="form-control">Aktif/Pasif</label>
+    <br />
+    @Html.DropDownListFor(x => x.Status, (IEnumerable<SelectListItem>)ViewBag.status, new { @class = "form-control" })
+
+</div>
+<br />
+<br />
+<div>
+    <button class="btn btn-outline-success" type="submit">Güncelle</button>
+</div>
+ }
+
+
+
+
+

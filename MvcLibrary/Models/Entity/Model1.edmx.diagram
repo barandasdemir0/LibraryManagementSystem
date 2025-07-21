@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="277edc5a71f24fa6a4a711ef61b2e890" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="DBLibraryModel.Author" Width="1.875" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Book" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Category" Width="1.5" PointX="5.875" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Member" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Movement" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Personel" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Punishment" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Till" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="DBLibraryModel.FK_Book_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Book_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Movement_Book" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Movement_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Punishment_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Punishment_Movement" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,59 @@
+﻿@model MvcLibrary.Models.Entity.Member
+@{
+    ViewBag.Title = "MemberUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+<br />
+@using (Html.BeginForm("MemberUpdate", "Members", FormMethod.Post))
+{
+    <div>
+
+        @Html.HiddenFor(x=>x.MemberId)
+        <label>Üye Adı</label>
+        @Html.TextBoxFor(x => x.MemberName, new { @class = "form-control" })
+        <br />
+        <label>Üye Soyadı</label>
+        @Html.TextBoxFor(x => x.MemberSurname, new { @class = "form-control" })
+        <br />
+        <label>Üye Mail</label>
+        @Html.TextBoxFor(x => x.MemberMail, new { @class = "form-control" })
+        <br />
+        <label>Üye Kullanıcı Adı</label>
+        @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+        <br />
+        <label>Üye Şifresi</label>
+        @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+        <br />
+        <label>Üye Resmi</label>
+        @Html.TextBoxFor(x => x.Image, new { @class = "form-control" })
+        <br />
+        <label>Üye Telefonu</label>
+        @Html.TextBoxFor(x => x.Telephone, new { @class = "form-control" })
+        <br />
+        <label>Üye Okulu</label>
+        @Html.TextBoxFor(x => x.School, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Aktif/Pasif</label>
+        <br />
+        @Html.DropDownListFor(x => x.Status, (IEnumerable<SelectListItem>)ViewBag.status, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <br />
+    <div>
+        <button class="btn btn-outline-success" type="submit">Güncelle</button>
+    </div>
+}
+
+
+
+
+
+
+
+
+

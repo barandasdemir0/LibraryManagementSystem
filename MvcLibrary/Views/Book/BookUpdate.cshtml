@@ -1,0 +1,68 @@
+﻿@model MvcLibrary.Models.Entity.Book
+@{
+    ViewBag.Title = "BookUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+@using (Html.BeginForm("BookUpdate", "Book", FormMethod.Post, new { id = "authorForm" }))
+{
+    <div>
+        @Html.HiddenFor(x => x.BookId)
+        <label class="form-control">Yazar Adı</label>
+        <br />
+        @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+        <br />
+        <label>Kategori</label>
+        @Html.DropDownListFor(x => x.Category1.CategoryId, (List<SelectListItem>)ViewBag.category, "Kategori Seçiniz", new { @class = "form-control" })
+        <br />
+        <label>Kitap Yazarı</label>
+        @Html.DropDownListFor(x => x.Author1.AuthorId, (List<SelectListItem>)ViewBag.author, "Yazar Seçiniz", new { @class = "form-control" })
+        <br />
+        <label class="form-control">Basım Yılı</label>
+        <br />
+        @Html.TextBoxFor(x => x.PublicationYear, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Sayfa Numarası</label>
+        <br />
+        @Html.TextBoxFor(x => x.PageNumber, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Aktif/Pasif</label>
+        <br />
+        @Html.DropDownListFor(x => x.Status, (IEnumerable<SelectListItem>)ViewBag.status, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <br />
+    <div>
+        <button class="btn btn-outline-success" type="button" id="btn1">Güncelle</button>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Yazar bilgileri güncellenecek.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, güncelle!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#authorForm").submit(); // form gönderilir
+                }
+            });
+        });
+    });
+</script>
+
+
+
+

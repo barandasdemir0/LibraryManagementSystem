@@ -1,0 +1,35 @@
+﻿@model MvcLibrary.Models.Entity.Personel
+@{
+    ViewBag.Title = "PersonelAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+<form class="form-group" method="post" id="authorForm">
+    <div>
+        <label>Personel Adı Soyadı</label>
+        @Html.TextBoxFor(x => x.PersonelNameSurname, new { @class = "form-control" })
+    <br />
+        @Html.ValidationMessageFor(x => x.PersonelNameSurname,"",new {@style = "color: red"})
+        <br />
+    </div>
+
+    <div>
+        <br />
+        <button class="btn btn-outline-success" type="submit" id="btn1">Ekle</button>
+    </div>
+</form>
+
+
+

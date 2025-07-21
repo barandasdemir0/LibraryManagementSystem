@@ -1,0 +1,53 @@
+﻿@model MvcLibrary.Models.Entity.Book
+@{
+    ViewBag.Title = "BookAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+<form class="form-group" method="post" id="authorForm">
+    <div>
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(x => x.BookName, new { @class = "form-control" })
+        <br />
+        <label>Kategori</label>
+        @Html.DropDownListFor(x => x.Category, (List<SelectListItem>)ViewBag.category, "Kategori Seçiniz", new { @class = "form-control" })
+        <br />
+        <label>Kitap Yazarı</label>
+        @Html.DropDownListFor(x => x.Author, (List<SelectListItem>)ViewBag.author, "Yazar Seçiniz", new { @class = "form-control" })
+        <br />
+        <label>Basım Yılı</label>
+        @Html.TextBoxFor(x => x.PublicationYear, new { @class = "form-control" })
+        <br />
+        <label>Sayfa Numarası</label>
+        @Html.TextBoxFor(x => x.PageNumber, new { @class = "form-control" })
+        <br />
+
+    </div>
+
+    <div>
+        <button class="btn btn-outline-success" type="submit" id="btn1">Ekle</button>
+    </div>
+</form>
+
+<script>
+    $("#btn1").click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarılı!',
+            text: 'Kitap başarıyla eklendi!'
+        }).then(() => {
+            $("#authorForm").submit();
+        });
+    });
+
+</script>
+
+
+

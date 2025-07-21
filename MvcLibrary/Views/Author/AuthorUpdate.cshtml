@@ -1,0 +1,59 @@
+﻿@model MvcLibrary.Models.Entity.Author
+@{
+    ViewBag.Title = "AuthorUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+@using (Html.BeginForm("AuthorUpdate", "Author", FormMethod.Post, new { id = "authorForm" }))
+{
+    <div>
+        @Html.HiddenFor(x => x.AuthorId)
+        <label class="form-control">Yazar Adı</label>
+        <br />
+        @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Yazar SoyAdı</label>
+        <br />
+        @Html.TextBoxFor(x => x.AuthorSurname, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Yazar Detayları</label>
+        <br />
+        @Html.TextAreaFor(x => x.AuthorDetails, new { @class = "form-control" })
+        <br />
+        <label class="form-control">Aktif/Pasif</label>
+        <br />
+        @Html.DropDownListFor(x => x.Status, (IEnumerable<SelectListItem>)ViewBag.status, new { @class = "form-control" })
+
+    </div>
+    <br />
+    <br />
+    <div>
+        <button class="btn btn-outline-success" type="button" id="btn1">Güncelle</button>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Yazar bilgileri güncellenecek.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, güncelle!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#authorForm").submit(); // form gönderilir
+                }
+            });
+        });
+    });
+</script>
+
+

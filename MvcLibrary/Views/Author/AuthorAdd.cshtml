@@ -1,0 +1,48 @@
+﻿@model MvcLibrary.Models.Entity.Author
+@{
+    ViewBag.Title = "AuthorAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+<form class="form-group" method="post" id="authorForm">
+    <div>
+        <label>Yazar Adı</label>
+        @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+        <br />
+        <label>Yazar Soyadı</label>
+        @Html.TextBoxFor(x => x.AuthorSurname, new { @class = "form-control" })
+        <br />
+        <label>Yazar Detay Bilgileri</label>
+        @Html.TextAreaFor(x => x.AuthorDetails, new { @class = "form-control" })
+        <br />
+
+    </div>
+
+    <div>
+        <button class="btn btn-outline-success" type="submit" id="btn1">Ekle</button>
+    </div>
+</form>
+
+<script>
+    $("#btn1").click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarılı!',
+            text: 'Yazar başarıyla eklendi!'
+        }).then(() => {
+            $("#authorForm").submit();
+        });
+    });
+
+</script>
+
+
+
+
