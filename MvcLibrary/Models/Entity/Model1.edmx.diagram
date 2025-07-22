@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="DBLibraryModel.Category" Width="1.5" PointX="5.875" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLibraryModel.Member" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLibraryModel.Movement" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBLibraryModel.Personel" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLibraryModel.Personel" Width="1.5" PointX="2.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLibraryModel.Punishment" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLibraryModel.sysdiagrams" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLibraryModel.Till" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
@@ -20,6 +20,9 @@
         <AssociationConnector Association="DBLibraryModel.FK_Movement_Member" ManuallyRouted="false" />
         <AssociationConnector Association="DBLibraryModel.FK_Punishment_Member" ManuallyRouted="false" />
         <AssociationConnector Association="DBLibraryModel.FK_Punishment_Movement" ManuallyRouted="false" />
+        <AssociationConnector Association="DBLibraryModel.FK_Movement_Personel" />
+        <EntityTypeShape EntityType="DBLibraryModel.About" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DBLibraryModel.Contact" Width="1.5" PointX="5.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

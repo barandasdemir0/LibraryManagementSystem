@@ -27,6 +27,8 @@ namespace MvcLibrary.Models.Entity
         public string PublicationYear { get; set; }
         public string PageNumber { get; set; }
         public Nullable<bool> Status { get; set; }
+        public string BookImage { get; set; }
+        public string Details { get; set; }
     
         public virtual Author Author1 { get; set; }
         public virtual Category Category1 { get; set; }

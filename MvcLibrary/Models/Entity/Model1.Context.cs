@@ -34,5 +34,7 @@ namespace MvcLibrary.Models.Entity
         public virtual DbSet<Punishment> Punishment { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Till> Till { get; set; }
+        public virtual DbSet<About> About { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
     }
 }

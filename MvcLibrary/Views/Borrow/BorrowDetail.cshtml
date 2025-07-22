@@ -1,0 +1,23 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Movement>
+@{
+    ViewBag.Title = "BorrowDetail";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h1>@ViewBag.name Kullanıcısının Aldığı Kitaplar</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Kitap Adları</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MovementId</td>
+            <td>@item.Book1.BookName</td>
+        </tr>
+
+    }
+</table>
+

@@ -1,0 +1,58 @@
+﻿@model MvcLibrary.Models.Entity.Movement
+@{
+    ViewBag.Title = "ReturnBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+<br />
+@using (Html.BeginForm("BorrowUpdate", "Borrow", FormMethod.Post))
+{
+    <div>
+        @Html.HiddenFor(x => x.MovementId)
+        <br />
+        <label>Kitap Adı</label>
+        <br />
+        @Html.TextBoxFor(x => x.Book1.BookName, new { @class = "form-control" })
+        <br />
+        <label>Üye Adı-soyadı</label>
+        <br />
+        @Html.TextBox("MemberFullName", Model.Member1.MemberName + " " + Model.Member1.MemberSurname, new { @class = "form-control", @readonly = "readonly" })
+
+        <br />
+        <label>Personel Adı-soyadı</label>
+        <br />
+        @Html.TextBoxFor(x => x.Personel1.PersonelNameSurname, new { @class = "form-control" })
+        <br />
+        <label>Alış Tarihi</label>
+        <br />
+        <input type="text" name="PurchaseDate" class="form-control" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+        <label>Normal İade Tarihi</label>
+        <br />
+        <input type="text" name="ReturnDate" class="form-control" value="@DateTime.Now.AddDays(14).ToShortDateString()" />
+        <br />
+        <label>Veriliş Tarihi</label>
+        <br />
+        <input type="text" name="ReturnMembersDate" class="form-control" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+        <label>Geç gelen gün sayısı </label>
+        <input type="text" id="lateInputs" class="form-control" value="@ViewBag.fark" />
+        <br />
+        
+    </div>
+    <div>
+        <button class="btn btn-outline-success" type="submit">Güncelle</button>
+    </div>
+}
+
+
+
+
+
+
+
+
+

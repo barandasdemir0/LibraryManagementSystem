@@ -14,8 +14,17 @@ namespace MvcLibrary.Models.Entity
     
     public partial class Personel
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Personel()
+        {
+            this.Movement = new HashSet<Movement>();
+        }
+    
         public byte PersonelId { get; set; }
         public string PersonelNameSurname { get; set; }
         public Nullable<bool> Status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Movement> Movement { get; set; }
     }
 }

@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DBLibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Details" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="AuthorId" />
@@ -26,6 +33,8 @@
           <Property Name="PublicationYear" Type="char" MaxLength="4" />
           <Property Name="PageNumber" Type="varchar" MaxLength="4" />
           <Property Name="Status" Type="bit" />
+          <Property Name="BookImage" Type="varchar" MaxLength="150" />
+          <Property Name="Details" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -34,6 +43,16 @@
           <Property Name="CategoryId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="varchar" MaxLength="20" />
           <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="50" />
+          <Property Name="ContactMail" Type="varchar" MaxLength="50" />
+          <Property Name="ContactSubject" Type="varchar" MaxLength="50" />
+          <Property Name="ContactMessage" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
@@ -57,9 +76,11 @@
           <Property Name="MovementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Book" Type="int" />
           <Property Name="Member" Type="int" />
-          <Property Name="Personel" Type="int" />
+          <Property Name="Personel" Type="tinyint" />
           <Property Name="PurchaseDate" Type="smalldatetime" />
           <Property Name="ReturnDate" Type="smalldatetime" />
+          <Property Name="ReturnMembersDate" Type="smalldatetime" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -146,6 +167,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Movement_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="Movement" Type="Self.Movement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="Movement">
+              <PropertyRef Name="Personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Punishment_Member">
           <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
           <End Role="Punishment" Type="Self.Punishment" Multiplicity="*" />
@@ -171,9 +204,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DBLibraryModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movement" EntityType="Self.Movement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
@@ -194,6 +229,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Movement_Member" Association="Self.FK_Movement_Member">
             <End Role="Member" EntitySet="Member" />
+            <End Role="Movement" EntitySet="Movement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Movement_Personel" Association="Self.FK_Movement_Personel">
+            <End Role="Personel" EntitySet="Personel" />
             <End Role="Movement" EntitySet="Movement" />
           </AssociationSet>
           <AssociationSet Name="FK_Punishment_Member" Association="Self.FK_Punishment_Member">
@@ -234,6 +273,8 @@
           <NavigationProperty Name="Author1" Relationship="Self.FK_Book_Author" FromRole="Book" ToRole="Author" />
           <NavigationProperty Name="Category1" Relationship="Self.FK_Book_Category" FromRole="Book" ToRole="Category" />
           <NavigationProperty Name="Movement" Relationship="Self.FK_Movement_Book" FromRole="Book" ToRole="Movement" />
+          <Property Name="BookImage" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -268,12 +309,15 @@
           <Property Name="MovementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Book" Type="Int32" />
           <Property Name="Member" Type="Int32" />
-          <Property Name="Personel" Type="Int32" />
+          <Property Name="Personel" Type="Byte" />
           <Property Name="PurchaseDate" Type="DateTime" Precision="0" />
           <Property Name="ReturnDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Book1" Relationship="Self.FK_Movement_Book" FromRole="Movement" ToRole="Book" />
           <NavigationProperty Name="Member1" Relationship="Self.FK_Movement_Member" FromRole="Movement" ToRole="Member" />
           <NavigationProperty Name="Punishment" Relationship="Self.FK_Punishment_Movement" FromRole="Movement" ToRole="Punishment" />
+          <NavigationProperty Name="Personel1" Relationship="DBLibraryModel.FK_Movement_Personel" FromRole="Movement" ToRole="Personel" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="ReturnMembersDate" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Personel">
           <Key>
@@ -282,6 +326,7 @@
           <Property Name="PersonelId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PersonelNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Movement" Relationship="DBLibraryModel.FK_Movement_Personel" FromRole="Personel" ToRole="Movement" />
         </EntityType>
         <EntityType Name="Punishment">
           <Key>
@@ -420,7 +465,42 @@
             <End Role="Movement" EntitySet="Movement" />
             <End Role="Punishment" EntitySet="Punishment" />
           </AssociationSet>
+          <AssociationSet Name="FK_Movement_Personel" Association="DBLibraryModel.FK_Movement_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="Movement" EntitySet="Movement" />
+          </AssociationSet>
+          <EntitySet Name="About" EntityType="DBLibraryModel.About" />
+          <EntitySet Name="Contact" EntityType="DBLibraryModel.Contact" />
         </EntityContainer>
+        <Association Name="FK_Movement_Personel">
+          <End Type="DBLibraryModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="DBLibraryModel.Movement" Role="Movement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="PersonelId" />
+            </Principal>
+            <Dependent Role="Movement">
+              <PropertyRef Name="Personel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="AboutId" />
+          </Key>
+          <Property Name="AboutId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactId" />
+          </Key>
+          <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ContactMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -441,6 +521,8 @@
           <EntitySetMapping Name="Book">
             <EntityTypeMapping TypeName="DBLibraryModel.Book">
               <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="BookImage" ColumnName="BookImage" />
                 <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="BookName" ColumnName="BookName" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
@@ -479,6 +561,8 @@
           <EntitySetMapping Name="Movement">
             <EntityTypeMapping TypeName="DBLibraryModel.Movement">
               <MappingFragment StoreEntitySet="Movement">
+                <ScalarProperty Name="ReturnMembersDate" ColumnName="ReturnMembersDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="MovementId" ColumnName="MovementId" />
                 <ScalarProperty Name="Book" ColumnName="Book" />
                 <ScalarProperty Name="Member" ColumnName="Member" />
@@ -526,6 +610,25 @@
                 <ScalarProperty Name="TillId" ColumnName="TillId" />
                 <ScalarProperty Name="Month" ColumnName="Month" />
                 <ScalarProperty Name="TotalMoney" ColumnName="TotalMoney" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="About">
+            <EntityTypeMapping TypeName="DBLibraryModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="DBLibraryModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactMessage" ColumnName="ContactMessage" />
+                <ScalarProperty Name="ContactSubject" ColumnName="ContactSubject" />
+                <ScalarProperty Name="ContactMail" ColumnName="ContactMail" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

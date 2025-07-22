@@ -1,0 +1,60 @@
+﻿@model MvcLibrary.Models.Entity.Movement
+@{
+    ViewBag.Title = "GiveBorrow";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+<form class="form-group" method="post" id="authorForm">
+    <div>
+        <label>Üye Id</label>
+        @Html.TextBoxFor(x => x.Member, new { @class = "form-control" })
+        <br />
+        <label>Kitap Id</label>
+        @Html.TextBoxFor(x => x.Book, new { @class = "form-control" })
+        <br />
+
+
+        <label>Personel</label>
+        @Html.TextBoxFor(x => x.Personel, new { @class = "form-control" })
+        <br />
+        <label>Kitap Verme Tarihi</label>
+        <input type="text" class="form-control" name="PurchaseDate" value="@DateTime.Now.ToShortDateString()" />
+        <br />
+        <label>Kitap Alma Tarihi</label>
+        <input type="text" class="form-control" name="ReturnDate" value="@DateTime.Now.AddDays(14).ToShortDateString()" />
+        <br />
+
+
+    </div>
+
+    <div>
+        <button class="btn btn-outline-success" type="submit" id="btn1">Ödünç Ver</button>
+    </div>
+</form>
+
+<script>
+    $("#btn1").click(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            icon: 'success',
+            title: 'Başarılı!',
+            text: 'Ödünç Verildi!'
+        }).then(() => {
+            $("#authorForm").submit();
+        });
+    });
+
+</script>
+
+
+
+
+@*@Html.DropDownListFor(x => x.Category, (List<SelectListItem>)ViewBag.category, "Kategori Seçiniz", new { @class = "form-control" })*@

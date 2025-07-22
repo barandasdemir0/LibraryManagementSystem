@@ -1,0 +1,62 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Movement>
+@{
+    ViewBag.Title = "TakeBorrow";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+<br />
+@using (Html.BeginForm("Index", "Book", FormMethod.Post))
+{
+    <div style="margin-bottom:15px; margin-top:15px">
+        <p>Aranacak Ödüncün giriniz : </p>@Html.TextBox("p")
+        <input type="submit" value="ara" />
+    </div>
+}
+
+
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Üye Adı Soyadı</th>
+        <th>Personel Adı Soyadı</th>
+        <th>Kitap</th>
+        <th>Kitap Ödünç Alma Tarihi</th>
+        <th>Kitap Geri Verme Tarihi</th>
+        <th>Kitap İade Et</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MovementId</td>
+            <td>@item.Member1.MemberName @item.Member1.MemberSurname</td>
+            <td>@item.Personel1.PersonelNameSurname</td>
+            <td>@item.Book1.BookName</td>
+            <td>@Convert.ToDateTime(@item.PurchaseDate).ToShortDateString()</td>
+            <td>@Convert.ToDateTime(@item.ReturnDate).ToShortDateString()</td>
+            <td><a href="/Borrow/ReturnBook/@item.MovementId" class="btn btn-outline-secondary">Kitabı İade Et</a></td>
+
+        </tr>
+    }
+
+
+</table>
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
