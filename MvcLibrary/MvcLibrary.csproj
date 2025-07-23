@@ -134,13 +134,18 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnnouncementController.cs" />
     <Compile Include="Controllers\AuthorController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BorrowController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PanelController.cs" />
     <Compile Include="Controllers\PersonalController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\StaticsController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\VitrinController.cs" />
@@ -149,6 +154,9 @@
     </Compile>
     <Compile Include="Models\Classes\Class1.cs" />
     <Compile Include="Models\Entity\About.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Announcement.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Author.cs">
@@ -164,6 +172,9 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Member.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entity\Message.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Entity\Model1.Context.cs">
@@ -235,6 +246,10 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="startbootstrap-simple-sidebar-gh-pages\assets\favicon.ico" />
+    <Content Include="startbootstrap-simple-sidebar-gh-pages\css\styles.css" />
+    <Content Include="startbootstrap-simple-sidebar-gh-pages\index.html" />
+    <Content Include="startbootstrap-simple-sidebar-gh-pages\js\scripts.js" />
     <Content Include="web2\css\bootstrap.css" />
     <Content Include="web2\css\clndr.css" />
     <Content Include="web2\css\jqvmap.css" />
@@ -584,6 +599,22 @@
     <Content Include="Views\Statics\Weather.cshtml" />
     <Content Include="Views\Statics\WeatherCard.cshtml" />
     <Content Include="Views\Statics\Gallery.cshtml" />
+    <Content Include="Views\Statics\LinqCard.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Shared\_LayoutPanel.cshtml" />
+    <Content Include="Views\Panel\Index.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\NewMessage.cshtml" />
+    <Content Include="Views\Message\SendMessage.cshtml" />
+    <Content Include="Views\Panel\MyBook.cshtml" />
+    <Content Include="Views\Author\AuthorDetails.cshtml" />
+    <Content Include="Views\Announcement\Index.cshtml" />
+    <Content Include="Views\Announcement\AnnouncementAdd.cshtml" />
+    <Content Include="Views\Announcement\AnnouncementUpdate.cshtml" />
+    <Content Include="Views\Announcement\AnnouncementDetails.cshtml" />
+    <Content Include="Views\Panel\Announcement.cshtml" />
+    <Content Include="Views\Panel\AnnouncementDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

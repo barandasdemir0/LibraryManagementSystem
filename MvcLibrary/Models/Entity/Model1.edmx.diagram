@@ -23,6 +23,8 @@
         <AssociationConnector Association="DBLibraryModel.FK_Movement_Personel" />
         <EntityTypeShape EntityType="DBLibraryModel.About" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="DBLibraryModel.Contact" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBLibraryModel.Message" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="DBLibraryModel.Announcement" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

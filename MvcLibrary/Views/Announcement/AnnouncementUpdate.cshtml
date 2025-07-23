@@ -1,0 +1,57 @@
+﻿@model MvcLibrary.Models.Entity.Announcement
+@{
+    ViewBag.Title = "AnnouncementUpdate";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+@using (Html.BeginForm("AnnouncementUpdate", "Announcement", FormMethod.Post, new { id = "AnnouncementForm" }))
+{
+    <div>
+        @Html.HiddenFor(x => x.AnnouncementId)
+        <label>Kategori Adı     <br /></label>
+        <br />     <br />
+        @Html.TextBoxFor(x => x.AnnouncementCategory, new { @class = "form-control" })
+        <br />
+        <label>Detaylar </label>
+        <br />     <br />
+        @Html.TextBoxFor(x => x.AnnouncementContent, new { @class = "form-control" })
+        <br />
+
+
+
+    </div>
+
+    <div>
+        <button class="btn btn-outline-success" type="button" id="btn1">Güncelle</button>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+        $("#btn1").click(function () {
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Duyuru bilgileri güncellenecek.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, güncelle!',
+                cancelButtonText: 'Vazgeç'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $("#AnnouncementForm").submit(); // form gönderilir
+                }
+            });
+        });
+    });
+</script>
+
+
+
+

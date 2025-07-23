@@ -1,0 +1,46 @@
+﻿@model MvcLibrary.Models.Entity.Announcement
+@{
+    ViewBag.Title = "AnnouncementDetails";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script src="~/Scripts/jquery-3.7.0.js"></script>
+
+<br />
+<form class="form-group" method="post" >
+    <div>
+        <label>Kategori Adı</label>
+        @Html.TextBoxFor(x => x.AnnouncementCategory, new { @class = "form-control", @readonly = "readonly" })
+
+        <br />
+        <label>İçerik </label>
+        @Html.TextAreaFor(x => x.AnnouncementContent, new { @class = "form-control", @readonly = "readonly" })
+
+        <br />
+        <br />
+        <label>Zaman </label>
+        <span class="form-control">@Model.Date.Value.ToString("dd.MM.yyyy")</span>
+
+
+
+
+        <br />
+
+
+
+    </div>
+
+    <div>
+
+    </div>
+</form>
+
+
+
+
+
+

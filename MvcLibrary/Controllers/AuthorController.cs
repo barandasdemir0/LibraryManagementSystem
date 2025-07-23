@@ -71,5 +71,15 @@ namespace MvcLibrary.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AuthorDetails(int id)
+        {
+          
+            var values = dB.Book.Where(x=>x.Author == id).ToList();
+            //diyorumkii author yani benim kitap tablosundaki yazarım ile gelen id eşleşen sonuçları getir
+            var yazarname = dB.Author.Where(x => x.AuthorId == id).Select(y => y.AuthorName + " " + y.AuthorSurname).FirstOrDefault();
+            ViewBag.name = yazarname;
+            return View(values);
+        }
+
     }
 }

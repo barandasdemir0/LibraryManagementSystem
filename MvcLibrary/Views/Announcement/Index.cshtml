@@ -1,5 +1,5 @@
 ﻿@using MvcLibrary.Models.Entity
-@model List<Author>
+@model List<Announcement>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -10,46 +10,37 @@
 
 <script src="~/Scripts/jquery-3.7.0.js"></script>
 <br />
-<h2>Yazarlar</h2>
+<h2>Duyurular</h2>
 
 
 <table class="table table-striped">
     <tr>
-        <th>#</th>
-        <th>Yazar Adı</th>
-        <th>Yazar SoyAdı</th>
-        <th>Detaylar</th>
-        <th>Durum</th>
+        <th>Duyuru No</th>
+        <th>Kategori</th>
+        <th>İçerik</th>
+        <th>Tarih</th>
         <th>Sil</th>
         <th>Güncelle</th>
         <th>Detay</th>
+
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.AuthorId</td>
-            <td>@item.AuthorName</td>
-            <td>@item.AuthorSurname</td>
-            <td>@item.AuthorDetails</td>
-            @switch (item.Status)
-            {
-                case true:
-                    <td>Aktif</td>
-                    break;
-                case false:
-                    <td>Pasif</td>
-                    break;
+            <td>@item.AnnouncementId</td>
+            <td>@item.AnnouncementCategory</td>
+            <td>@item.AnnouncementContent</td>
+            <td>@item.Date.Value.ToShortDateString()</td>
 
-            }
-            <td><a href="/Author/AuthorDelete/@item.AuthorId" id="btn1" class="btn btn-outline-danger btn-delete">Yazar Sil</a></td>
-            <td><a href="/Author/AuthorUpdate/@item.AuthorId" class="btn btn-outline-warning">Yazar Güncelle</a></td>
-            <td><a href="/Author/AuthorDetails/@item.AuthorId" class="btn btn-outline-info">Yazar Kitapları</a></td>
+            <td><a href="/Announcement/AnnouncementDelete/@item.AnnouncementId" id="btn1" class="btn btn-outline-danger btn-delete"> Sil</a></td>
+            <td><a href="/Announcement/AnnouncementUpdate/@item.AnnouncementId" class="btn btn-outline-warning"> Güncelle</a></td>
+            <td><a href="/Announcement/AnnouncementDetails/@item.AnnouncementId" class="btn btn-outline-info"> Detaylar</a></td>
         </tr>
     }
 
 
 </table>
-<a href="/Author/AuthorAdd/" class="btn btn-outline-success">Yazar Ekle</a>
+<a href="/Announcement/AnnouncementAdd/" class="btn btn-outline-success"> Ekle</a>
 <br />
 
 <script>

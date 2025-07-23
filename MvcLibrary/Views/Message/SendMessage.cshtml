@@ -1,0 +1,33 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Message>
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+
+<h2>Gönderilen Mesajlar Sayfası</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>Gönderen</th>
+        <th>Alıcı</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Sender</td>
+            <td>@item.Receiver</td>
+            <td>@item.Subject</td>
+            <td>@item.MessageContent</td>
+            <td>@item.Date.Value.ToShortDateString()</td>
+        </tr>
+
+       
+    }
+
+</table>

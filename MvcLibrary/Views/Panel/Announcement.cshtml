@@ -1,0 +1,40 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Announcement>
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+
+<table class="table table-striped">
+<tr>
+    <th>Duyuru No</th>
+    <th>Kategori</th>
+    <th>İçerik</th>
+    <th>Tarih</th>
+
+    <th>Detay</th>
+
+</tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.AnnouncementId</td>
+        <td>@item.AnnouncementCategory</td>
+        <td>@item.AnnouncementContent</td>
+        <td>@item.Date.Value.ToShortDateString()</td>
+
+
+        <td><a href="/Panel/AnnouncementDetails/@item.AnnouncementId" class="btn btn-outline-info"> Detaylar</a></td>
+    </tr>
+}
+
+
+</table>
+
+
+
+
+
+

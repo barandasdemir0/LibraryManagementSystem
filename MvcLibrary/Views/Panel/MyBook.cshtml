@@ -1,0 +1,43 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Movement>
+@{
+    ViewBag.Title = "MyBook";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kitap</th>
+        <th>Kitap Ödünç Alma Tarihi</th>
+        <th>Kitap Geri Verme Tarihi</th>
+      
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Book1.BookName</td>
+            <td>@Convert.ToDateTime(@item.PurchaseDate).ToShortDateString()</td>
+            <td>@Convert.ToDateTime(@item.ReturnMembersDate).ToShortDateString()</td>
+
+
+        </tr>
+    }
+
+
+</table>
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+

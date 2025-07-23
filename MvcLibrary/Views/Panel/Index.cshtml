@@ -1,0 +1,79 @@
+﻿@model MvcLibrary.Models.Entity.Member
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+@using (Html.BeginForm("Index2", "Panel", FormMethod.Post))
+{
+    <table class="table table-bordered">
+
+        <tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">ID</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.MemberId, new { @class = "form-control", @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">AD</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.MemberName, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">SOYAD</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.MemberSurname, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">KULLANICI ADI</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">ŞİFRESİ</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">TELEFON</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.Telephone, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label style="font-weight:bolder">Okulu</label>
+                <br />  <br />
+                @Html.TextBoxFor(x => x.School, new { @class = "form-control" })
+            </td>
+        </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </table>
+    <br />
+    <button class=" btn btn-outline-success">Şifre Güncelle</button>
+}
+
+

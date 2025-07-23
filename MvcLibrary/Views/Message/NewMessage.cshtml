@@ -1,0 +1,28 @@
+﻿@model MvcLibrary.Models.Entity.Message
+@{
+    ViewBag.Title = "NewMessage";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+
+
+<br />
+<form class="form-group" method="post" id="authorForm">
+    <div>
+        <label>Alıcı Mail</label>
+        @Html.TextBoxFor(x => x.Receiver, new { @class = "form-control" })
+        <br />
+        <label>Konu </label>
+        @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+        <br />
+        <label>İçerik </label>
+        @Html.TextAreaFor(x => x.MessageContent, new { @class = "form-control" })
+        <br />
+    </div>
+
+    <div>
+        <br />
+        <button class="btn btn-outline-success" type="submit" id="btn1">Ekle</button>
+    </div>
+</form>
+
+

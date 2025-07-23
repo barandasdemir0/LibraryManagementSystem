@@ -12,6 +12,15 @@
           <Property Name="AboutId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Details" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnnouncementCategory" Type="varchar" MaxLength="50" />
+          <Property Name="AnnouncementContent" Type="varchar(max)" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="AuthorId" />
@@ -68,6 +77,17 @@
           <Property Name="Telephone" Type="varchar" MaxLength="20" />
           <Property Name="School" Type="varchar" MaxLength="150" />
           <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sender" Type="varchar" MaxLength="50" />
+          <Property Name="Receiver" Type="varchar" MaxLength="50" />
+          <Property Name="Subject" Type="varchar" MaxLength="50" />
+          <Property Name="MessageContent" Type="varchar(max)" />
+          <Property Name="Date" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="Movement">
           <Key>
@@ -205,11 +225,13 @@
         </Association>
         <EntityContainer Name="DBLibraryModelStoreContainer">
           <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movement" EntityType="Self.Movement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Punishment" EntityType="Self.Punishment" Schema="dbo" store:Type="Tables" />
@@ -471,6 +493,8 @@
           </AssociationSet>
           <EntitySet Name="About" EntityType="DBLibraryModel.About" />
           <EntitySet Name="Contact" EntityType="DBLibraryModel.Contact" />
+          <EntitySet Name="Message" EntityType="DBLibraryModel.Message" />
+          <EntitySet Name="Announcement" EntityType="DBLibraryModel.Announcement" />
         </EntityContainer>
         <Association Name="FK_Movement_Personel">
           <End Type="DBLibraryModel.Personel" Role="Personel" Multiplicity="0..1" />
@@ -500,6 +524,26 @@
           <Property Name="ContactMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ContactSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ContactMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageId" />
+          </Key>
+          <Property Name="MessageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnnouncementCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AnnouncementContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -629,6 +673,28 @@
                 <ScalarProperty Name="ContactMail" ColumnName="ContactMail" />
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Message">
+            <EntityTypeMapping TypeName="DBLibraryModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="MessageId" ColumnName="MessageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcement">
+            <EntityTypeMapping TypeName="DBLibraryModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcement">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="AnnouncementContent" ColumnName="AnnouncementContent" />
+                <ScalarProperty Name="AnnouncementCategory" ColumnName="AnnouncementCategory" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
