@@ -108,6 +108,8 @@
           </Key>
           <Property Name="PersonelId" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PersonelNameSurname" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
           <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Punishment">
@@ -349,6 +351,8 @@
           <Property Name="PersonelNameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="Boolean" />
           <NavigationProperty Name="Movement" Relationship="DBLibraryModel.FK_Movement_Personel" FromRole="Personel" ToRole="Movement" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Punishment">
           <Key>
@@ -619,6 +623,8 @@
           <EntitySetMapping Name="Personel">
             <EntityTypeMapping TypeName="DBLibraryModel.Personel">
               <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
                 <ScalarProperty Name="PersonelNameSurname" ColumnName="PersonelNameSurname" />

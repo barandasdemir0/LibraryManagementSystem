@@ -1,0 +1,43 @@
+﻿@using MvcLibrary.Models.Entity
+@model List<Announcement>
+
+
+
+<div class="active tab-pane" id="activity">
+
+
+    @foreach (var item in Model)
+    {
+        <div class="post">
+
+            <div class="user-block">
+
+                <img class="img-circle img-bordered-sm" src="~/AdminLTE-3.0.4/dist/img/user1-128x128.jpg" alt="user image">
+
+                <span class="username">
+
+                    <a href="#">@item.AnnouncementCategory.</a>
+
+                  
+
+                </span>
+
+                <span class="description">@item.Date.Value.ToShortDateString()</span>
+
+            </div>
+
+            <!-- /.user-block -->
+
+            <p>
+
+                @item.AnnouncementContent
+
+            </p>
+
+
+
+
+        </div>
+    }
+    </div>
+

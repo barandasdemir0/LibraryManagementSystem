@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcLibrary.Controllers
 {
+
     public class CategoryController : Controller
     {
         // GET: Category

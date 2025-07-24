@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcLibrary.Controllers
 {
+    [AllowAnonymous] // bu komut eklemezsek hiç bir sayfaya gitmez bu komut ile sadece bu sayfaya authorize işlemi yapmamızı sağlarım 
     public class RegisterController : Controller
     {
         // GET: Register
